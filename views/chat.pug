@@ -1,0 +1,10 @@
+extends layout
+
+block content
+	div(class='container chatBox')
+		div(id='chatBox', class='well')
+			ul(id='messages')
+			input(id='msgInput', autocomplete='off')
+			button(id='btnSend') Send
+	script(src="/socket.io/socket.io.js")
+	script(src="/javascripts/chat.js")

@@ -1,0 +1,10 @@
+extends layout
+
+block content
+	div(class='container')
+		div(class='jumbotron text-center')
+			h1 Web Chat
+			form(action='/chat', method='post')
+				label Enter your username:
+				input(type='text', class='form-control', name='username')
+				button(type='submit', class='btn btn-primary') Enter

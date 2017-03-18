@@ -1,0 +1,32 @@
+body {
+  padding-top: 100px;
+}
+
+#chatBox {
+	position: relative;
+	height: 400px;
+	font: 13px Helvetica, Arial;
+}
+
+#msgInput {
+	position: absolute;
+	bottom: 0;
+	background: #FFF; 
+	padding: 3px; 
+	width: 100%;
+	border: 1px thin black; 
+	padding: 10px; 
+	width: 90%; 
+	margin-right: .5%;
+	margin-bottom: 10px;
+}
+
+#btnSend {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	width: 80px;
+	height: 40px;
+	margin-bottom: 10px;
+	margin-right: 10px;
+}
