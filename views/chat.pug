@@ -1,10 +1,19 @@
 extends layout
 
 block content
-	div(class='container chatBox')
-		div(id='chatBox', class='well')
+	div(class='well')
+		button(id='btnLogout', class='btn btn-primary') Logout
+		p(style='display: inline; margin-left: 50px;') Logged in as:  
+			strong(id='username')= username
+		
+
+	div(class='container', id='chatContainer')
+		div(id='chatBox', class='well center-block')
 			ul(id='messages')
-			input(id='msgInput', autocomplete='off')
-			button(id='btnSend') Send
+			input(id='msgInput', autocomplete='off', class='form-control')
+			button(id='btnSend', class='btn btn-primary') Send
+		div(id='onlineUsers', class='well')
+			p 
+				strong Online Users
 	script(src="/socket.io/socket.io.js")
 	script(src="/javascripts/chat.js")
