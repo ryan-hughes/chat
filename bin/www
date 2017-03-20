@@ -8,6 +8,8 @@ var app = require('../app');
 var debug = require('debug')('chat:server');
 var http = require('http');
 
+var onlineUsersList = [];
+
 /**
  * Get port from environment and store in Express.
  */
@@ -34,11 +36,20 @@ io.on('connection', function(socket) {
   });
 
   socket.on('onlineUser', function(data) {
-    io.sockets.emit('onlineUser', data);
+    if (data.user) {
+      onlineUsersList.push(data.user);
+      io.sockets.emit('updateOnlineUsers', onlineUsersList);
+    }
   });
 
   socket.on('disconnectUser', function(data) {
-    io.sockets.emit('disconnectUser', data);
+    if (data.user) {
+      var i = onlineUsersList.indexOf(data.user);
+      if (i !== -1) {
+          onlineUsersList.splice(i,1);
+          io.sockets.emit('updateOnlineUsers', onlineUsersList);
+      }
+    }
   });
 
   console.log("A user connected");

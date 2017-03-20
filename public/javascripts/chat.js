@@ -25,29 +25,12 @@ window.onload = function() {
         }
     });
 
-    // When a user has logged into chat, add them to the Online Users box
-    socket.on('onlineUser', function(data) {
-        if (data.user) {
-            onlineUsers.push(data.user);
+    // Online users list has been updated, update our UI
+    socket.on("updateOnlineUsers", function(onlineUsersList) {
+        if (onlineUsersList) {
             var html = '';
-            for (var i=0; i<onlineUsers.length; i++) {
-                html += onlineUsers[i] + "<br />";
-            }
-            usersBox.innerHTML = html;
-        }
-    });
-
-    // When a user has left the chat, remove them from onlineUsers
-    socket.on('disconnectUser', function(data) {
-        if (data.user) {
-            var i = onlineUsers.indexOf(data.user);
-            if (i !== -1) {
-                onlineUsers.splice(i,1);
-            }
-
-            var html = '';
-            for (var i=0; i<onlineUsers.length; i++) {
-                html += onlineUsers[i] + "<br />";
+            for (var i=0; i<onlineUsersList.length; i++) {
+                html += onlineUsersList[i] + "<br />";
             }
             usersBox.innerHTML = html;
         }
