@@ -1,5 +1,34 @@
 body {
+	background-image: url("/images/bg.png");
 }
+
+.well {
+	background-color: #FFFFFF;
+}
+
+.container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#header {
+	position: relative;
+	height: 75px;
+	width: 100%;
+	background-color: #FFFFFF;
+	top: 0;
+	border-bottom: 1px solid black;
+	padding-top: 13px;
+	margin-bottom: 20px;
+}
+
+#btnLogout {
+	border: 1px solid black;
+	margin-left: 20px;
+}
+
 
 #chatContainer {
 	position: relative;
@@ -8,42 +37,45 @@ body {
 
 #chatBox {
 	position: relative;
-	height: 400px;
+	height: 500px;
 	font: 13px Helvetica, Arial;
 	word-wrap: break-word;
-	width: 800px;
-	display: inline-block;
 	text-align: left;
+	overflow: auto;
+	width:100%;
+	margin-bottom: -1px;
+	border: 1px solid black;
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
 }
 
 #msgInput {
-	position: absolute;
-	bottom: 0;
 	background: #FFF; 
 	padding: 3px; 
-	width: 100%;
-	border: 1px thin black; 
-	padding: 10px; 
-	width: 90%; 
-	margin-right: .5%;
-	margin-bottom: 10px;
+	border: 1px solid black;  
+	border-top-left-radius: 0px;
 }
 
 #btnSend {
-	position: absolute;
-	right: 0;
-	bottom: 0;
-	width: 80px;
-	height: 35px;
-	margin-bottom: 10px;
-	margin-right: 10px;
+	border-top-right-radius: 0px;
+	border: 1px solid black;  
 }
 
-#onlineUsers {
-	position: absolute;
-	display: inline-block;
-	height: 400px;
-	width: 150px;
+
+#onlineUsersBox {
+	height: 535px;
+	width: 50%;
+	min-width: 175px;
 	text-align: center;
-	margin-left: 20px;
+	border: 1px solid black;
+}
+
+#footer {
+	position: fixed;
+	height: 50px;
+	width: 100%;
+	background-color: #FFFFFF;
+	bottom: 0;
+	border-top: 1px solid black;
+	padding-top: 8px;
 }
