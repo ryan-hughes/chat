@@ -13,6 +13,10 @@ body {
     margin-left: auto;
 }
 
+#welcomeBox {
+	border: 1px solid black;
+}
+
 #header {
 	position: relative;
 	height: 75px;

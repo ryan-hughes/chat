@@ -36,6 +36,16 @@ window.onload = function() {
         }
     });
 
+    // When exiting the chat, let the server know
+    window.onbeforeunload = exit;
+    function exit() {
+             socket.emit('disconnectUser', {user: userName});
+    };
+
+    btnLogout.onclick = function() {
+        window.location.replace("/");
+    };
+
     // When the send button has been pressed, get the text and send it to our server to be broadcasted
     sendButton.onclick = function() {
         var text = field.value;
@@ -44,13 +54,16 @@ window.onload = function() {
         field.focus();
     };
 
-    btnLogout.onclick = function() {
-        window.location.replace("/");
-    };
-
-    // When exiting the chat, let the server know
-    window.onbeforeunload = exit;
-    function exit() {
-             socket.emit('disconnectUser', {user: userName});
-    };
+    // If enter is pressed, get the text and send to the server to be broadcasted
+    document.getElementById('msgInput').onkeypress = function(e){
+    if (!e) e = window.event;
+    var keyCode = e.keyCode || e.which;
+    if (keyCode == '13'){
+      var text = field.value;
+        socket.emit('send', { message: text , user: userName});
+        field.value = "";
+        field.focus();
+      return false;
+    }
+  }
 }
