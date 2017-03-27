@@ -3,8 +3,9 @@ extends layout
 block content
 	div(id='header')
 		button(id='btnLogout', class='btn btn-secondary btn-lg') Logout
-		p(style='display: inline; margin-left: 50px;') Logged in as:  
+		p(style='position: absolute; display: inline; margin-left: 50px; margin-top: 5px;', id='loggedInAs') Logged in as:  
 			strong(id='username')= username
+		img(src='/images/ryguy.png', id='ryguy')
 	
 	div(class='container-fluid')
 		div(class='row')
@@ -18,8 +19,8 @@ block content
 						button(id='btnSend', class='btn btn-secondary') Send
 			div(class='col-sm-3')
 				div(id='onlineUsersBox', class='well')
-					strong Online Users
-					p(id='onlineUsers')
+					strong(style='font-family: "Bree Serif", serif; font-size: 21px') Online Users
+					ul(id='onlineUsers')
 	div(id='footer', class="text-center")
 
 		p(style='display: inline; position: absolute; margin-top: 6px; left: 50px;')

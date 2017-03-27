@@ -30,7 +30,7 @@ window.onload = function() {
         if (onlineUsersList) {
             var html = '';
             for (var i=0; i<onlineUsersList.length; i++) {
-                html += onlineUsersList[i] + "<br />";
+                html += "<li>" + onlineUsersList[i] + "</li>";
             }
             usersBox.innerHTML = html;
         }

@@ -29,7 +29,7 @@ var server = http.createServer(app);
  */
 var io = require('socket.io')(server);
 io.on('connection', function(socket) {
-  socket.emit('message', {message: 'Connected to chat', user: 'ryanhugs.com'});
+  socket.emit('message', {message: 'Connected to chat <hr/>', user: 'ryanhugs.com'});
 
   socket.on('send', function(data) {
     io.sockets.emit('message', data);
