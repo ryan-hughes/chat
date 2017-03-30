@@ -77,7 +77,7 @@ window.onload = function() {
     var date = new Date();
     var hours = (date.getHours() + 11) % 12 + 1;
     console.log(date.getHours());
-    var minutes = date.getMinutes();
+    var minutes = ( '0' + (date.getMinutes()+1) ).slice(-2);
     var amPM = "AM";
 
     if (date.getHours() >= 12) { amPM = "PM"; }
