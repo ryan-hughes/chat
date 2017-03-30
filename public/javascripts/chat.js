@@ -8,16 +8,22 @@ window.onload = function() {
     var usersBox = document.getElementById("onlineUsers");
     var userName = document.getElementById("username").innerHTML;
     var socket = io();
+    var timeZoneOffset = new Date().getTimezoneOffset();
 
     socket.emit('onlineUser', {user: userName});
 
     // When a message has been received, push it to our messages array and update the DOM
     socket.on('message', function (data) {
         if(data.message) {
-            messages.push( {message: data.message, user: data.user} );
+            messages.push( {message: data.message, user: data.user, time: buildTimestamp()} );
             var html = '';
             for(var i=0; i<messages.length; i++) {
-                html += messages[i].user + ": " + messages[i].message + '<br />';
+                // Doesn't display timestamp for 'connected' message...need to fix later
+                if (i === 0) {
+                    html += messages[i].user + ": " + messages[i].message + '<br />';
+                } else {
+                    html += "[" + messages[i].time + "] " + messages[i].user + ": " + messages[i].message + '<br />';
+                }
             }
             content.innerHTML = html;
         } else {
@@ -65,5 +71,17 @@ window.onload = function() {
         field.focus();
       return false;
     }
+  }
+
+  function buildTimestamp() {
+    var date = new Date();
+    var hours = (date.getHours() + 11) % 12 + 1;
+    console.log(date.getHours());
+    var minutes = date.getMinutes();
+    var amPM = "AM";
+
+    if (date.getHours() >= 12) { amPM = "PM"; }
+
+    return hours + ":" + minutes + " " + amPM;
   }
 }

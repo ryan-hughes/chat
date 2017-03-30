@@ -32,7 +32,7 @@ io.on('connection', function(socket) {
   socket.emit('message', {message: 'Connected to chat <hr/>', user: 'ryanhugs.com'});
 
   socket.on('send', function(data) {
-    io.sockets.emit('message', data);
+    io.sockets.emit('message', {message: data.message, user: data.user});
   });
 
   socket.on('onlineUser', function(data) {
