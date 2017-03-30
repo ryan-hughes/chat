@@ -26,6 +26,7 @@ window.onload = function() {
                 }
             }
             content.innerHTML = html;
+            updateScroll();
         } else {
             console.log("There is a problem:", data);
         }
@@ -83,5 +84,17 @@ window.onload = function() {
     if (date.getHours() >= 12) { amPM = "PM"; }
 
     return hours + ":" + minutes + " " + amPM;
+  }
+
+  var scrolled = false;
+  function updateScroll(){
+    if(!scrolled){
+        var chatBox = document.getElementById("chatBox");
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+  }
+
+  document.getElementById('chatBox').onwheel = function() {
+    
   }
 }
