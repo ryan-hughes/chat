@@ -5,6 +5,7 @@ window.onload = function() {
     var field = document.getElementById("msgInput");
     var sendButton = document.getElementById("btnSend");
     var content = document.getElementById("messages");
+    var connectMessage = document.getElementById("connectMessage");
     var usersBox = document.getElementById("onlineUsers");
     var userName = document.getElementById("username").innerHTML;
     var socket = io();
@@ -20,9 +21,9 @@ window.onload = function() {
             for(var i=0; i<messages.length; i++) {
                 // Doesn't display timestamp for 'connected' message...need to fix later
                 if (i === 0) {
-                    html += messages[i].user + ": " + messages[i].message + '<br />';
+                    connectMessage.innerHTML = messages[i].user + ": " + messages[i].message + '<br />';
                 } else {
-                    html += "[" + messages[i].time + "] " + messages[i].user + ": " + messages[i].message + '<br />';
+                    html += "<tr><td style='width: 75px; vertical-align: top;'>[" + messages[i].time + "]</td><td style='padding-right: 5px; font-weight: bold; vertical-align: top;'>" + messages[i].user + ":</td><td>" + messages[i].message + "</td></tr>";
                 }
             }
             content.innerHTML = html;
@@ -95,6 +96,6 @@ window.onload = function() {
   }
 
   document.getElementById('chatBox').onwheel = function() {
-    
+
   }
 }
